@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,18 +8,26 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
+
     <title></title>
+
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
          rel = "stylesheet">
-<style>.opaque{background-color: black; height: 400px;width: 600px; opacity: .7; padding:20px; border-radius: 10px;}.whtTxt{color: white; opacity: 1;}.center{text-align:center;}input[type=search] {width:100px;}</style>
+
+
+<style>.opaque{background-color: black; height: 400px;width: 700px; opacity: .7; padding:20px; border-radius: 10px;}
+.whtTxt{color: white; opacity: 1;}.center{text-align:center;}input[type=search] {width:120px;text-align: center;}.info-panel{display:none;}</style>
+
+
   </head>
+
   <body id="body">
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
+<!--Header-->
       <div class="row">
         <div class="col-md-12">
           <div class="page-header">
@@ -28,7 +37,7 @@
           </div>
         </div>
       </div>
-</div>
+<!--Nav-->
   <div class="row">
     <div class="col-md-12">
       <nav class="navbar navbar-default" role="navigation">
@@ -77,42 +86,48 @@
       </nav>
     </div>
   </div>
-<div class="row">
   <div class="col-md-6 col-md-offset-1">
     <h2 class="whtTxt">
           Go on a trip or whatev. ¯\_(ツ)_/¯
     </h2>
   <br>
-    </div>
   </div>
-<div class="row">
 <div class="col-md-6 col-md-offset-3">
   <div class="opaque">
+  <div id ="togglelinks">
     <ul class="list-inline center">
-      <li class="list-inline-item">
-        <button type="button" class="btn btn-default btn-lg">
+      <li class="list-inline-item"><a class="toggle" href="#panel-one">
+        <button type="button" class="btn btn-default btn-lg" id="flights">
           <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>  Flights
-        </button>
+        </button></a>
       </li>
-      <li class="list-inline-item">
-        <button type="button" class="btn btn-default btn-lg">
+      <li class="list-inline-item"><a class="toggle" href="#panel-two">
+        <button type="button" class="btn btn-default btn-lg" id="test">
           <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>  Food
-        </button>
+        </button></a>
     </li>
-    <li class="list-inline-item">
-      <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>  Fun
-      </button>
-    </li>
-    <li class="list-inline-item">
-      <button type="button" class="btn btn-default btn-lg">
+    <li class="list-inline-item"><a class="toggle" href="#panel-three">
+      <button type="button" class="btn btn-default btn-lg" id="test2">
         <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>  Hotels
-      </button>
+      </button></a>
+    </li>
+    <li class="list-inline-item"><a class="toggle" href="#panel-four">
+      <button type="button" class="btn btn-default btn-lg" id="test2">
+        <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>  Attractions
+      </button></a>
+    </li>
+    <li class="list-inline-item"><a class="toggle" href="#panel-five">
+        <button type="button" class="btn btn-default btn-lg" id="test2">
+        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>  Events
+      </button></a>
     </li>
   </ul>
+  </div>
   <br>
   <br>
-    <form role="form">
+  <div id="panels">
+    <div id="panel-one" class="info-panel">
+    <form>
       <ul class="list-inline center">
         <li class="list-inline-item">
           <div class="form-group  whtTxt">
@@ -144,10 +159,10 @@
         </li>
         <li class="list-inline-item">
           <div class="form-group  whtTxt">
-            <label for="duration">
+            <label for="returndate">
               Return
             </label>
-          <input type="search" class="form-control" id="duration" />
+          <input type="search" class="form-control" id="returndate" />
           </div>
         </li>
         <br>
@@ -156,7 +171,70 @@
             <label for="maxprice">
               Max Price
             </label>
-          <input type="search" class="form-control" id="maxprice" />
+          <input type="number" class="form-control" id="maxprice" min="0" pattern="\d+"/>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="adults">
+              Adults
+            </label>
+          <input type="number" class="form-control" id="adults" min="0" pattern="\d+"/>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="children">
+              Children
+            </label>
+          <input type="number" class="form-control" id="children" min="0" pattern="\d+"/>
+          </div>
+        </li>
+        <br>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="oneway">
+              One way?
+            </label>
+          <input type="checkbox"  id="oneway" name="oneway"/>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="oneway">
+              Direct Flight?
+            </label>
+          <input type="checkbox"  id="oneway" name="oneway"/>
+          </div>
+        </li>
+        <br>
+        <button type="submit" class="btn btn-default" id="submit2">
+          Submit
+        </button>
+      </ul>
+      </form>
+      </div>
+      <div id="panel-two" class="info-panel">
+    <form>
+      <ul class="list-inline center">
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="attractionlocation">
+                Location
+              </label>
+            <input type="search" class="form-control" id="foodlocation" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="keyword">
+                Keyword
+              </label>
+            <input type="search" class="form-control" id="keyword" />
+            </div>
           </div>
         </li>
         <br>
@@ -164,215 +242,136 @@
         <button type="submit" class="btn btn-default">
           Submit
         </button>
+      </ul>
       </form>
+      </div>
+      <div id="panel-three" class="info-panel">
+    <form>
+      <ul class="list-inline center">
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="origin">
+                Location
+              </label>
+            <input type="search" class="form-control" id="hotellocation" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="maxhotelrate">
+                Maximum Rate
+              </label>
+            <input type="number" class="form-control" id="maxhotelrate" min="0" pattern="\d+"/>
+            </div>
+          </div>
+        </li>
+        <br>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="checkin">
+                Check In
+              </label>
+            <input type="search" class="form-control" id="checkin" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="checkout">
+                Check Out
+              </label>
+            <input type="search" class="form-control" id="checkout" />
+            </div>
+          </div>
+        </li>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+      </ul>
+      </form>
+      </div>
+
+      <div id="panel-four" class="info-panel">
+    <form>
+      <ul class="list-inline center">
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="attractionlocation">
+                Location
+              </label>
+            <input type="search" class="form-control" id="attractionlocation" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="keyword">
+                Keyword
+              </label>
+            <input type="search" class="form-control" id="keyword" />
+            </div>
+          </div>
+        </li>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+      </ul>
+      </form>
+      </div>
+
+      <div id="panel-five" class="info-panel">
+    <form>
+      <ul class="list-inline center">
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="eventlocation">
+                Location
+              </label>
+            <input type="search" class="form-control" id="eventlocation" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="keyword">
+                Keyword
+              </label>
+            <input type="search" class="form-control" id="keyword" />
+            </div>
+          </div>
+        </li>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+      </ul>
+      </form>
+      </div>
+
     </div>
   </div>
 </div>
+
+<%= javascript_include_tag "script" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-      <!-- Javascript -->
-      <script>
-         $(function() {
-            var availableCities = [
-      "ATL",
-      "PEK",
-      "LHR",
-      "ORD",
-      "HND",
-      "LAX",
-      "CDG",
-      "DFW",
-      "FRA",
-      "HKG",
-      "DEN",
-      "DXB",
-      "CGK",
-      "AMS",
-      "MAD",
-      "BKK",
-      "JFK",
-      "SIN",
-      "CAN",
-      "LAS",
-      "PVG",
-      "SFO",
-      "PHX",
-      "IAH",
-      "CLT",
-      "MIA",
-      "MUC",
-      "KUL",
-      "FCO",
-      "IST",
-      "SYD",
-      "MCO",
-      "ICN",
-      "DEL",
-      "BCN",
-      "LGW",
-      "EWR",
-      "YYZ",
-      "SHA",
-      "MSP",
-      "SEA",
-      "DTW",
-      "PHL",
-      "BOM",
-      "GRU",
-      "MNL",
-      "CTU",
-      "BOS",
-      "SZX",
-      "MEL",
-      "NRT",
-      "ORY",
-      "MEX",
-      "DME",
-      "AYT",
-      "TPE",
-      "ZRH",
-      "LGA",
-      "FLL",
-      "IAD",
-      "PMI",
-      "CPH",
-      "SVO",
-      "BWI",
-      "KMG",
-      "VIE",
-      "OSL",
-      "JED",
-      "BNE",
-      "SLC",
-      "DUS",
-      "BOG",
-      "MXP",
-      "JNB",
-      "ARN",
-      "MAN",
-      "MDW",
-      "DCA",
-      "BRU",
-      "DUB",
-      "GMP",
-      "DOH",
-      "STN",
-      "HGH",
-      "CJU",
-      "YVR",
-      "TXL",
-      "SAN",
-      "TPA",
-      "CGH",
-      "BSB",
-      "CTS",
-      "XMN",
-      "RUH",
-      "FUK",
-      "GIG",
-      "HEL",
-      "LIS",
-      "ATH",
-      "AKL"
-            ];
-            $( "#origin" ).autocomplete({
-               source: availableCities,
-               autoFocus:true
-            });$( "#destination" ).autocomplete({
-               source: availableCities,
-               autoFocus:true
-            });
-         });
-      </script>
-  <script>
-  $( function() {
-    var dateFormat = "yyyy/mm/dd",
-      from = $( "#departuredate" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#duration" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
-      return date;
-    }
-  } );
-  </script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-    var images = ["http://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Philippines-Wallpaper.jpg","http://www.cnac.gob.ve/filmcommission/images/boletines/2013-04/Alex.jpg","https://i.ytimg.com/vi/EvmWqPR06zY/maxresdefault.jpg","http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2015/09/15/family-mountain-vacation-lake-louise.jpg.rend.tccom.1280.960.jpeg","http://www.keribrownhomes.com/wp-content/uploads/2016/07/vac
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-<h1 id="yoyo">HELLO</h1>
-  <form >
-    <input id="category" name="category">
-    <input id="area" name="area">
-<button id="ME">Submit</button>
-<br>
-  <form >
-  <h1>Flights</h1>
-      <label>Origin</label><br>
-    <input id="origin" name="origin"><br>
-        <label>Destination</label><br>
-    <input id="destination" name="destination"><br>
-           <label>Departure date</label><br>
-    <input id="departuredate" name="departuredate"><br>
-     <label>Duration</label><br>
-    <input id="duration" name="duration"><br>
-         <label>Max Price</label><br>
-    <input id="maxprice" name="maxprice"><br>
-             <label>One way?</label><br>
-    <input id="oneway" name="oneway"><br>
-             <label>Direct?</label><br>
-    <input id="direct" name="direct"><br>
-<button id="submit2">Submit</button>
-<br>
- <form >
- <h1>Hotels</h1>
-      <label>Location</label><br>
-    <input id="location" name="location"><br>
-        <label>Check in date</label><br>
-    <input id="checkin" name="checkin"><br>
-           <label>Check out date</label><br>
-    <input id="checkout" name="checkout"><br>
-     <label>Max rate</label><br>
-    <input id="maxhotelrate" name="maxhotelrate"><br>
-<button id="submit3">Submit</button>
-<%= javascript_include_tag "script" %>
-  </form>
-</body>
-
+    <script type="text/javascript" src="availableCities.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
- -->

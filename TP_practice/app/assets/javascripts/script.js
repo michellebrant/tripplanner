@@ -91,35 +91,119 @@ appendResults = function(data){
 
 }
 
-getAllInfoFlights = function(data) {
-    $.ajax({
-            url: "http://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?origin="+ORIGIN+
-            "&destination="+DESTINATION+"&departure_date="+DATE+"&duration="+DURATION+
-            "&max_price="+MAXPRICE+"&apikey=qzex7QQAbrN1YS9N7nDo2TQDlENnACs8&one-way="+ONEWAY+"&direct="+DIRECT,
-            method: 'GET'
-        })
-        .done(function(data) {
-          console.log(data)
-          appendAllInfoFlights(data)
-
-        })
-}
 
 appendAllInfoFlights = function(data){
+    for(i=0;i<10;i++){
+    resultDiv = $('<div></div>')
+    results = $('<ul></ul>');
+    inboundpricelist = $('<li></li>');
+    inboundarrivelist = $('<li></li>');
+    inbounddepartslist = $('<li></li>');
+    inboundclasslist = $('<li></li>');
+    inboundseatslist = $('<li></li>');
+    inbounddestinationairportlist = $('<li></li>');
+    inboundoriginairportlist = $('<li></li>');
+    inboundflightnumberlist = $('<li></li>');
+    inboundairlinelist = $('<li></li>');
+    outboundpricelist = $('<li></li>');
+    outboundarrivelist = $('<li></li>');
+    outbounddepartslist = $('<li></li>');
+    outboundclasslist = $('<li></li>');
+    outboundseatslist = $('<li></li>');
+    outbounddestinationairportlist = $('<li></li>');
+    outboundoriginairportlist = $('<li></li>');
+    outboundairlinelist = $('<li></li>');
+    outboundflightnumberlist = $('<li></li>');
 
+    inboundprice = data.results[i].fare.total_price
+    inboundarrive = data.results[i].itineraries[0].inbound.flights[0].arrives_at
+    inbounddeparts = data.results[i].itineraries[0].inbound.flights[0].departs_at
+    inboundclass = data.results[i].itineraries[0].inbound.flights[0].booking_info.travel_class
+    inboundseats = data.results[i].itineraries[0].inbound.flights[0].booking_info.seats_remaining
+    inbounddestinationairport = data.results[i].itineraries[0].inbound.flights[0].destination.airport
+    inboundflightnumber = data.results[i].itineraries[0].inbound.flights[0].flight_number
+    inboundoriginairport = data.results[i].itineraries[0].inbound.flights[0].origin.airport
+    inboundairline =  data.results[i].itineraries[0].inbound.flights[0].marketing_airline
+
+    outboundprice = data.results[i].fare.total_price
+    outboundarrive = data.results[i].itineraries[0].outbound.flights[0].arrives_at
+    outbounddeparts = data.results[i].itineraries[0].outbound.flights[0].departs_at
+    outboundclass = data.results[i].itineraries[0].outbound.flights[0].booking_info.travel_class
+    outboundseats = data.results[i].itineraries[0].outbound.flights[0].booking_info.seats_remaining
+    outbounddestinationairport = data.results[i].itineraries[0].outbound.flights[0].destination.airport
+    outboundflightnumber = data.results[i].itineraries[0].outbound.flights[0].flight_number
+    outboundoriginairport = data.results[i].itineraries[0].outbound.flights[0].origin.airport
+    outboundairline =  data.results[i].itineraries[0].outbound.flights[0].marketing_airline
+
+
+    inboundpricelist.text(inboundprice)
+    inboundarrivelist.text(inboundarrive)
+    inbounddepartslist.text(inbounddeparts)
+    inboundclasslist.text(inboundclass)
+    inboundseatslist.text(inboundseats)
+    inbounddestinationairportlist.text(inbounddestinationairport)
+    inboundoriginairportlist.text(inboundoriginairport)
+    inboundairlinelist.text(inboundairline)
+    inboundflightnumberlist.text(inboundflightnumber)
+    outboundpricelist.text(outboundprice)
+    outboundarrivelist.text(outboundarrive)
+    outbounddepartslist.text(outbounddeparts)
+    outboundclasslist.text(outboundclass)
+    outboundseatslist.text(outboundseats)
+    outbounddestinationairportlist.text(outbounddestinationairport)
+    outboundoriginairportlist.text(outboundoriginairport)
+    outboundairlinelist.text(outboundairline)
+    outboundflightnumberlist.text(outboundflightnumber)
+
+    results.append(inboundpricelist)
+    results.append(inboundarrivelist)
+    results.append(inbounddepartslist)
+    results.append(inboundclasslist)
+    results.append(inboundseatslist)
+    results.append(inbounddestinationairportlist)
+    results.append(inboundoriginairportlist)
+    results.append(inboundairlinelist)
+    results.append(inboundflightnumberlist)
+    results.append(outboundpricelist)
+    results.append(outboundarrivelist)
+    results.append(outbounddepartslist)
+    results.append(outboundclasslist)
+    results.append(outboundseatslist)
+    results.append(outbounddestinationairportlist)
+    results.append(outboundoriginairportlist)
+    results.append(outboundairlinelist)
+    results.append(outboundflightnumberlist)
+
+    resultDiv.append(results)
+
+
+    $('body').append(resultDiv);
+  }
 }
+
 
 
 $('#submit2').click(function(event) {
+  console.log('hi')
     event.preventDefault();
     ORIGIN = $('#origin').val()
     DESTINATION = $('#destination').val()
-    DURATION = $('#duration').val()
+    RETURNDATE = $('#returndate').val()
+    RETURNDATE2 = RETURNDATE.replace('/','-')
+    RETURNDATE3 = RETURNDATE2.replace('/','-')
+    ADULTS = $('#adults').val()
+    CHILDREN = $('#children').val()
     DATE = $('#departuredate').val()
+    DATE2 = DATE.replace('/','-')
+    DATE3 = DATE2.replace('/','-')
+    DATE4 = DATE3.toString()
+    RETURNDATE4 = RETURNDATE3.toString()
     MAXPRICE = $('#maxprice').val()
     ONEWAY = $('#oneway').val()
     DIRECT = $('#direct').val()
     getAllInfoFlights(ORIGIN);
+
+
 })
 
 getAllInfoHotel = function(data) {
@@ -137,6 +221,27 @@ getAllInfoHotel = function(data) {
 
         })
 }
+
+
+getAllInfoFlights = function(data) {
+    $.ajax({
+            url: "http://api.sandbox.amadeus.com//v1.2/flights/low-fare-search?apikey=qzex7QQAbrN1YS9N7nDo2TQDlENnACs8&origin="+ORIGIN+
+            "&destination="+DESTINATION+"&departure_date="+DATE4+"&return_date="+RETURNDATE4+
+            "&adults="+ADULTS+"&children="+CHILDREN+"&nonstop=false&max_price="+MAXPRICE+"&one-way=false&number_of_results=10",
+            method: 'GET'
+        })
+        .done(function(data) {
+          appendAllInfoFlights(data)
+          console.log(data.results[0].outbound[0].flights[0].departs_at)
+          console.log(data.results[0].outbound[0].flights[0].arrives_at)
+          console.log(data.results[0].outbound[0].flights[0].origin.airport)
+          console.log(data.results[0].outbound[0].flights[0].origin.terminal)
+
+        })
+}
+
+
+
 
 $('#submit3').click(function(event) {
     event.preventDefault();
@@ -191,49 +296,72 @@ appendAllHotelInfo = function(data){
 
 }
 
-// findDuration = function(departure_date, return_date){
 
+var randomizeBackground= function(){
+    var images = ["http://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Philippines-Wallpaper.jpg","http://www.cnac.gob.ve/filmcommission/images/boletines/2013-04/Alex.jpg","https://i.ytimg.com/vi/EvmWqPR06zY/maxresdefault.jpg","http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2015/09/15/family-mountain-vacation-lake-louise.jpg.rend.tccom.1280.960.jpeg","http://www.keribrownhomes.com/wp-content/uploads/2016/07/vacation-house-design-with-wooden-wall-surrounded-by-snow.jpg","http://chainimage.com/images/england-scotland-ireland-tour-luxury-uk-vacation-zicasso.jpg","http://www.daviddanielsphotography.com/wp-content/uploads/2013/12/san-franciscos-golden-gate-bridge-with-a-new-sky.jpg" ]
+    $('#body').css({'background-image': 'url(' + images[Math.floor(Math.random() * images.length)] + ')'});
+};
 
-// if (departure_date[5]+departure_date[6] === return_date[5]+return_date[6]){
-//     depart = parseInt(departure_date[8]+departure_date[9])
-//     returns = parseInt(return_date[8]+return_date[9])
+randomizeBackground()
 
-//    return duration = returns - depart
+var divToggle = function(){
+$(".toggle").click(function() {
+    var $toggled = $(this).attr('href');
+    $($toggled).siblings(':visible').hide();
+    $($toggled).toggle("slide", {direction: 'up'}, 750);
+    return false;
+    });
+  };
+divToggle()
 
+var calendarOptions = function(){
+    var dateFormat = "yyyy/mm/dd",
+      from = $( "#departuredate, #checkin" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#duration, #checkout" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
 
-// }
-// else if (departure_date[5]+departure_date[6] != return_date[5]+return_date[6] && departure_date[5]+departure_date[6]==='01' || departure_date[5]+departure_date[6]==='03' || departure_date[5]+departure_date[6] ==='05' || departure_date[5]+departure_date[6]==='07' || departure_date[5]+departure_date[6]==='08' || departure_date[5]+departure_date[6]==='10' || departure_date[5]+departure_date[6]==='12' ){
-//   depart = parseInt(departure_date[8]+departure_date[9])
-//   returns = parseInt(return_date[8]+return_date[9])
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
 
-//   departlength = 31 - depart
-//   returnlength = 0 + returns
+      return date;
+    }
+}
+calendarOptions()
 
-//   return duration = departlength + returnlength
-
-
-// }
-
-// else if (departure_date[5]+departure_date[6] != return_date[5]+return_date[6] && departure_date[5]+departure_date[6]==='02' ){
-//     depart = parseInt(departure_date[8]+departure_date[9])
-//   returns = parseInt(return_date[8]+return_date[9])
-
-//   departlength = 28 - depart
-//   returnlength = 0 + returns
-
-//   return duration = departlength + returnlength
-
-// }
-// else{
-//   depart = parseInt(departure_date[8]+departure_date[9])
-//   returns = parseInt(return_date[8]+return_date[9])
-
-//   departlength = 30 - depart
-//   returnlength = 0 + returns
-
-//   return duration = departlength + returnlength
-
-// }
-// }
-
-// findDuration('2017-04-30', '2017-05-05')
+var getLocation = function(){
+           $(function() {
+            $( "#origin" ).autocomplete({
+               source: availableCities,
+               autoFocus:true
+            });$( "#destination" ).autocomplete({
+               source: availableCities,
+               autoFocus:true
+            });$( "#location" ).autocomplete({
+               source: availableCities,
+               autoFocus:true
+            });$( "#attractionlocation" ).autocomplete({
+               source: availableCities,
+               autoFocus:true
+            });
+});
+}
+getLocation()
