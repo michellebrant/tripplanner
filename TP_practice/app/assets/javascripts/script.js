@@ -19,10 +19,20 @@ getAllInfoFourSquare = function(data) {
 }
 $('#ME').click(function(event) {
     event.preventDefault();
-    category = $('#category').val()
+    category = $('#foodkeyword').val()
     category = category.split(' ');
     category = category.join('%20')
-    ll = $('#area').val();
+    ll = $('#foodlocation').val();
+    ll = ll.split(' ');
+    ll = ll.join("%20")
+    getAllInfoFourSquare(category);
+})
+$('#ME2').click(function(event) {
+    event.preventDefault();
+    category = $('#attractionkeyword').val()
+    category = category.split(' ');
+    category = category.join('%20')
+    ll = $('#attractionlocation').val();
     ll = ll.split(' ');
     ll = ll.join("%20")
     getAllInfoFourSquare(category);
@@ -245,7 +255,7 @@ getAllInfoFlights = function(data) {
 
 $('#submit3').click(function(event) {
     event.preventDefault();
-    HOTELLOCATION = $('#location').val()
+    HOTELLOCATION = $('#hotellocation').val()
     HOTELCHECKINDATE = $('#checkin').val()
     HOTELCHECKOUTDATE = $('#checkout').val()
     MAXRATE = $('#maxhotelrate').val()
