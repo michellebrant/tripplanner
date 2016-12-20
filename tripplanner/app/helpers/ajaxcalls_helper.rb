@@ -1,0 +1,2 @@
+module AjaxcallsHelper
+end

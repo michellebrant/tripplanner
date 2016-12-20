@@ -1,59 +1,12 @@
-<script src="http://jpillora.com/xdomain/dist/0.6/xdomain.min.js"></script>
-<script>
-xdomain.masters({
-  'http://client.com': /.*/
-});
-</script>
 
-<script>
-  function makeCallLoggedOut(searchValue){
-    $.ajax({
-      url: '/eventfulCall',
-      method: "get",
-      // data: this is how you send inputs to backend, in an object here
-
-    }).done(function(data) {
-      // this is where you get the data back from the backend
-        console.log(data,'data-in')
-    })
-  }
-$( ".eventfulCall" ).click(function(d) {
-  var searchValue = d.target.dataset.searchvalue;
-  makeCallLoggedOut(searchValue);
-});
-
-</script>
 
 <p id="notice"><%= notice %></p>
 
-First name: <input type="text" name="FirstName" value="Mickey"><br>
-Last name: <input type="text" name="LastName" value="Mouse"><br>
-<input class="eventfulCall" type="submit" value="Submit">
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+
 
 <%= link_to 'New Post', new_post_path %>
