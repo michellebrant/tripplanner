@@ -91,7 +91,7 @@ appendResults = function(data){
 
 }
 
-getAllInfoAmadeus = function(data) {
+getAllInfoFlights = function(data) {
     $.ajax({
             url: "http://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?origin="+ORIGIN+
             "&destination="+DESTINATION+"&departure_date="+DATE+"&duration="+DURATION+
@@ -100,10 +100,15 @@ getAllInfoAmadeus = function(data) {
         })
         .done(function(data) {
           console.log(data)
-          // appendResultsAmadeus(data)
+          appendAllInfoFlights(data)
 
         })
 }
+
+appendAllInfoFlights = function(data){
+
+}
+
 
 $('#submit2').click(function(event) {
     event.preventDefault();
@@ -114,7 +119,7 @@ $('#submit2').click(function(event) {
     MAXPRICE = $('#maxprice').val()
     ONEWAY = $('#oneway').val()
     DIRECT = $('#direct').val()
-    getAllInfoAmadeus(ORIGIN);
+    getAllInfoFlights(ORIGIN);
 })
 
 getAllInfoHotel = function(data) {
@@ -126,7 +131,8 @@ getAllInfoHotel = function(data) {
             method: 'GET'
         })
         .done(function(data) {
-          console.log(data)
+          appendAllHotelInfo(data)
+
           // appendResultsAmadeus(data)
 
         })
@@ -140,3 +146,94 @@ $('#submit3').click(function(event) {
     MAXRATE = $('#maxhotelrate').val()
     getAllInfoHotel(HOTELLOCATION);
 })
+
+appendAllHotelInfo = function(data){
+  for(i=0;i<10;i++){
+    resultDiv = $('<div></div>')
+    results = $('<ul></ul>');
+    itemName = $('<li></li>');
+    itemAddress1 = $('<li></li>');
+    itemAddress2 = $('<li></li>');
+    itemAddress3 = $('<li></li>');
+    itemAddress4 = $('<li></li>');
+    itemAddress5 = $('<li></li>');
+    itemPrice = $('<li></li>');
+    itemContact = $('<li></li>');
+    name = data.results[i].property_name
+    addressLine1 = data.results[i].address.line1
+    addressLine2 = data.results[i].address.city
+    addressLine3 = data.results[i].address.region
+    addressLine4 = data.results[i].address.postal_code
+    addressLine5 = data.results[i].address.country
+    itemPricee = data.results[i].min_daily_rate.amount
+    itemContactt = data.results[i].contacts[0].detail
+    itemName.text(name)
+    itemAddress1.text(addressLine1)
+    itemAddress2.text(addressLine2)
+    itemAddress3.text(addressLine3)
+    itemAddress4.text(addressLine4)
+    itemAddress5.text(addressLine5)
+    itemPrice.text(itemPricee)
+    itemContact.text(itemContactt)
+
+    results.append(itemName);
+    results.append(itemAddress1);
+    results.append(itemAddress2);
+    results.append(itemAddress3);
+    results.append(itemAddress4);
+    results.append(itemAddress5);
+    results.append(itemPrice);
+    results.append(itemContact);
+    resultDiv.append(results);
+    $('body').append(resultDiv);
+  }
+
+
+}
+
+// findDuration = function(departure_date, return_date){
+
+
+// if (departure_date[5]+departure_date[6] === return_date[5]+return_date[6]){
+//     depart = parseInt(departure_date[8]+departure_date[9])
+//     returns = parseInt(return_date[8]+return_date[9])
+
+//    return duration = returns - depart
+
+
+// }
+// else if (departure_date[5]+departure_date[6] != return_date[5]+return_date[6] && departure_date[5]+departure_date[6]==='01' || departure_date[5]+departure_date[6]==='03' || departure_date[5]+departure_date[6] ==='05' || departure_date[5]+departure_date[6]==='07' || departure_date[5]+departure_date[6]==='08' || departure_date[5]+departure_date[6]==='10' || departure_date[5]+departure_date[6]==='12' ){
+//   depart = parseInt(departure_date[8]+departure_date[9])
+//   returns = parseInt(return_date[8]+return_date[9])
+
+//   departlength = 31 - depart
+//   returnlength = 0 + returns
+
+//   return duration = departlength + returnlength
+
+
+// }
+
+// else if (departure_date[5]+departure_date[6] != return_date[5]+return_date[6] && departure_date[5]+departure_date[6]==='02' ){
+//     depart = parseInt(departure_date[8]+departure_date[9])
+//   returns = parseInt(return_date[8]+return_date[9])
+
+//   departlength = 28 - depart
+//   returnlength = 0 + returns
+
+//   return duration = departlength + returnlength
+
+// }
+// else{
+//   depart = parseInt(departure_date[8]+departure_date[9])
+//   returns = parseInt(return_date[8]+return_date[9])
+
+//   departlength = 30 - depart
+//   returnlength = 0 + returns
+
+//   return duration = departlength + returnlength
+
+// }
+// }
+
+// findDuration('2017-04-30', '2017-05-05')

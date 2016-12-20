@@ -1,4 +1,327 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title></title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+<style>.opaque{background-color: black; height: 400px;width: 600px; opacity: .7; padding:20px; border-radius: 10px;}.whtTxt{color: white; opacity: 1;}.center{text-align:center;}input[type=search] {width:100px;}</style>
+  </head>
+  <body id="body">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h1>
+              TravelApp <small class=" whtTxt">For travel</small>
+            </h1>
+          </div>
+        </div>
+      </div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+             <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button> <a class="navbar-brand" href="#">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">Flights</a>
+            </li>
+            <li>
+              <a href="#">Food</a>
+            </li>
+            <li>
+              <a href="#">Fun</a>
+            </li>
+            <li>
+              <a href="#">Lodging</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<strong class="caret"></strong></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Sign In</a>
+                </li>
+                <li>
+                  <a href="#">Profile</a>
+                </li>
+                <li>
+                  <a href="#">Sign Out</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="#">Sign Up</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-1">
+    <h2 class="whtTxt">
+          Go on a trip or whatev. ¯\_(ツ)_/¯
+    </h2>
+  <br>
+    </div>
+  </div>
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  <div class="opaque">
+    <ul class="list-inline center">
+      <li class="list-inline-item">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>  Flights
+        </button>
+      </li>
+      <li class="list-inline-item">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>  Food
+        </button>
+    </li>
+    <li class="list-inline-item">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>  Fun
+      </button>
+    </li>
+    <li class="list-inline-item">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>  Hotels
+      </button>
+    </li>
+  </ul>
+  <br>
+  <br>
+    <form role="form">
+      <ul class="list-inline center">
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="origin">
+                Origin
+              </label>
+            <input type="search" class="form-control" id="origin" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <div class = "ui-widget">
+              <label for="destination">
+                Destination
+              </label>
+            <input type="search" class="form-control" id="destination" />
+            </div>
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="destination">
+              Departure
+            </label>
+          <input type="search" class="form-control" id="departuredate" />
+          </div>
+        </li>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="duration">
+              Return
+            </label>
+          <input type="search" class="form-control" id="duration" />
+          </div>
+        </li>
+        <br>
+        <li class="list-inline-item">
+          <div class="form-group  whtTxt">
+            <label for="maxprice">
+              Max Price
+            </label>
+          <input type="search" class="form-control" id="maxprice" />
+          </div>
+        </li>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <!-- Javascript -->
+      <script>
+         $(function() {
+            var availableCities = [
+      "ATL",
+      "PEK",
+      "LHR",
+      "ORD",
+      "HND",
+      "LAX",
+      "CDG",
+      "DFW",
+      "FRA",
+      "HKG",
+      "DEN",
+      "DXB",
+      "CGK",
+      "AMS",
+      "MAD",
+      "BKK",
+      "JFK",
+      "SIN",
+      "CAN",
+      "LAS",
+      "PVG",
+      "SFO",
+      "PHX",
+      "IAH",
+      "CLT",
+      "MIA",
+      "MUC",
+      "KUL",
+      "FCO",
+      "IST",
+      "SYD",
+      "MCO",
+      "ICN",
+      "DEL",
+      "BCN",
+      "LGW",
+      "EWR",
+      "YYZ",
+      "SHA",
+      "MSP",
+      "SEA",
+      "DTW",
+      "PHL",
+      "BOM",
+      "GRU",
+      "MNL",
+      "CTU",
+      "BOS",
+      "SZX",
+      "MEL",
+      "NRT",
+      "ORY",
+      "MEX",
+      "DME",
+      "AYT",
+      "TPE",
+      "ZRH",
+      "LGA",
+      "FLL",
+      "IAD",
+      "PMI",
+      "CPH",
+      "SVO",
+      "BWI",
+      "KMG",
+      "VIE",
+      "OSL",
+      "JED",
+      "BNE",
+      "SLC",
+      "DUS",
+      "BOG",
+      "MXP",
+      "JNB",
+      "ARN",
+      "MAN",
+      "MDW",
+      "DCA",
+      "BRU",
+      "DUB",
+      "GMP",
+      "DOH",
+      "STN",
+      "HGH",
+      "CJU",
+      "YVR",
+      "TXL",
+      "SAN",
+      "TPA",
+      "CGH",
+      "BSB",
+      "CTS",
+      "XMN",
+      "RUH",
+      "FUK",
+      "GIG",
+      "HEL",
+      "LIS",
+      "ATH",
+      "AKL"
+            ];
+            $( "#origin" ).autocomplete({
+               source: availableCities,
+               autoFocus:true
+            });$( "#destination" ).autocomplete({
+               source: availableCities,
+               autoFocus:true
+            });
+         });
+      </script>
+  <script>
+  $( function() {
+    var dateFormat = "yyyy/mm/dd",
+      from = $( "#departuredate" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#duration" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+      return date;
+    }
+  } );
+  </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+    var images = ["http://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Philippines-Wallpaper.jpg","http://www.cnac.gob.ve/filmcommission/images/boletines/2013-04/Alex.jpg","https://i.ytimg.com/vi/EvmWqPR06zY/maxresdefault.jpg","http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2015/09/15/family-mountain-vacation-lake-louise.jpg.rend.tccom.1280.960.jpeg","http://www.keribrownhomes.com/wp-content/uploads/2016/07/vac
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title></title>
@@ -52,3 +375,4 @@
 
 
 
+ -->
