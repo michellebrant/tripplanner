@@ -20,16 +20,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li>
-              <a href="#">Flights</a>
+              <a class="toggle" href="#panel-one">Flights</a>
             </li>
             <li>
-              <a href="#">Food</a>
+              <a class="toggle" href="#panel-two">Food</a>
             </li>
             <li>
-              <a href="#">Fun</a>
+              <a class="toggle" href="#panel-three">Hotels</a>
             </li>
             <li>
-              <a href="#">Lodging</a>
+              <a class="toggle" href="#panel-four">Attractions</a>
+            </li>
+            <li>
+              <a class="toggle" href="#panel-five">Events</a>
             </li>
           </ul>
               <% if user_signed_in? %>
@@ -76,9 +79,4 @@
       </nav>
     </div>
   </div>
-  <div class="col-md-6 col-md-offset-1">
-    <h2 class="whtTxt">
-          Go on a trip or whatev. ¯\_(ツ)_/¯
-    </h2>
-  <br>
-  </div>
+

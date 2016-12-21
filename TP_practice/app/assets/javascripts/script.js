@@ -267,6 +267,7 @@ randomizeBackground()
 
 var divToggle = function(){
 $(".toggle").click(function() {
+    $('#whatev').hide()
     var $toggled = $(this).attr('href');
     $($toggled).siblings(':visible').hide();
     $($toggled).toggle("slide", {direction: 'up'}, 750);
