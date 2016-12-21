@@ -282,7 +282,20 @@ appendAllHotelInfo = function(data){
     addressLine5 = data.results[i].address.country
     itemPricee = data.results[i].min_daily_rate.amount
     itemContactt = data.results[i].contacts[0].detail
-    itemName.text(name)
+    nameparams = name.replace(/ /g, '')
+    addressLine1Params = addressLine1.replace(/ /g, '')
+    addressLine2Params = addressLine2.replace(/ /g, '')
+    addressLine3Params = addressLine3.replace(/ /g, '')
+    addressLine3Params = addressLine3.replace(/','/g, '')
+    addressLine4Params = addressLine4.replace(/ /g, '')
+    addressLine5Params = addressLine5.replace(/ /g, '')
+    itemPriceParams = itemPricee.replace(/ /g, '%20')
+    itemPriceParams = itemPricee.replace('.', 'P')
+    itemContactParams = itemContactt.replace(/ /g, '%20')
+    urlID = nameparams + '%20'+ addressLine1Params + addressLine2Params +addressLine3Params  + addressLine4Params + addressLine5Params + '%20' + itemPriceParams + '%20' +itemContactParams
+    namelist = $('<a href=/hotels/'+urlID+'>'+name+'</a>');
+
+    itemName.append(namelist)
     itemAddress1.text(addressLine1)
     itemAddress2.text(addressLine2)
     itemAddress3.text(addressLine3)
@@ -305,6 +318,8 @@ appendAllHotelInfo = function(data){
 
 
 }
+
+
 
 
 var randomizeBackground= function(){

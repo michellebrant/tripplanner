@@ -10,16 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221033911) do
+ActiveRecord::Schema.define(version: 20161221160954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "trips", force: :cascade do |t|
+  create_table "attractions", force: :cascade do |t|
     t.string   "name"
-    t.string   "destination"
+    t.integer  "trip_id"
+    t.string   "address"
+    t.integer  "rating"
+    t.string   "price"
+    t.string   "restaurant_url"
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["trip_id"], name: "index_attractions_on_trip_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.text     "description"
+    t.string   "image"
+    t.string   "URL"
+    t.integer  "trip_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["trip_id"], name: "index_events_on_trip_id", using: :btree
+  end
+
+  create_table "flights", force: :cascade do |t|
+    t.integer  "trip_id"
+    t.integer  "price"
+    t.string   "departuredate_time"
+    t.string   "arrivaldate_time"
+    t.string   "class"
+    t.integer  "seats_left"
+    t.string   "departure_airport"
+    t.string   "arrival_airport"
+    t.string   "airline"
+    t.integer  "flight_number"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["trip_id"], name: "index_flights_on_trip_id", using: :btree
+  end
+
+  create_table "hotels", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "trip_id"
+    t.string   "rate"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "address"
+    t.index ["trip_id"], name: "index_hotels_on_trip_id", using: :btree
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "trip_id"
+    t.string   "address"
+    t.integer  "rating"
+    t.string   "price"
+    t.string   "restaurant_url"
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["trip_id"], name: "index_restaurants_on_trip_id", using: :btree
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "hotels"
+    t.string   "events"
+    t.string   "locations"
+    t.string   "flights"
+    t.string   "attractions"
+    t.string   "trip_name"
+    t.string   "day"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,8 +115,15 @@ ActiveRecord::Schema.define(version: 20161221033911) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "trips"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "attractions", "trips"
+  add_foreign_key "events", "trips"
+  add_foreign_key "flights", "trips"
+  add_foreign_key "hotels", "trips"
+  add_foreign_key "restaurants", "trips"
+  add_foreign_key "trips", "users"
 end

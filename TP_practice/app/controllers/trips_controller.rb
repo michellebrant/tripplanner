@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+
+skip_before_action  :verify_authenticity_token
     # before_action :autheticate_user!
     # before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
@@ -20,10 +22,22 @@ class TripsController < ApplicationController
 
 end
 
-def create
-  @response = HTTParty.get("https://api.foursquare.com//v2/venues/explore?client_id=JXMGCWGIBGAJUNCQEJAGRANIBCPBW2R210YW0UUQ1Y3NL5HP&client_secret=0DJW0W2MWCSAIZIISJFY3YAI4B2SDIF4DIWN5UWMY2ALXQ2E&near=#{params[:area]}&sortByDistance=1&radius=500&query=#{params[:category]}&v=20161124&m=foursquare")
-  redirect_to "/trips"
+  def create
+
+    @trip = Trip.create(hotels: params[:hotels],
+                  events: params[:events],
+                  locations: params[:locations],
+                  flights: params[:flights],
+                  attractions: params[:attractions],
+                  trip_name: params[:trip_name],
+                  day: params[:day])
+
+    @trip.user = current_user
+    @trip.update(user_id: @trip.user[:id])
+
   end
+
+
 end
 
 
