@@ -324,6 +324,7 @@ $(".toggle").click(function() {
   };
 divToggle()
 
+/*
 var calendarOptions = function(){
     var dateFormat = "yyyy/mm/dd",
       from = $( "#departuredate, #checkin" )
@@ -375,3 +376,5 @@ var getLocation = function(){
 });
 }
 getLocation()
+*/
+
