@@ -104,8 +104,8 @@ appendResults = function(data){
 
 appendAllInfoFlights = function(data){
     for(i=0;i<10;i++){
-    resultDiv = $('<div class="col-md-10 col-md-offset-1 opaque2">')
-    results = $('<ul></ul>');
+    resultDiv = $('<div class="col-md-3 col-md-offset-2 opaque2 whtTxt"></div>')
+    results = $('<ul class="list-unstyled"></ul>');
 
 
     inboundprice = data.results[i].fare.total_price
@@ -136,16 +136,16 @@ appendAllInfoFlights = function(data){
     results.append('<li>' + 'Seats: ' + inboundseats + '</li>')
     results.append('<li>' + 'Destination Airport: ' + inbounddestinationairport  + '</li>')
     results.append('<li>' + 'Origin Airport: ' + inboundoriginairport  + '</li>')
-    results.append('<li>' + 'Airline: ' + inboundairline + '</li>')
-    results.append('<li>' + 'Flight Number: ' + inboundflightnumber + '</li>')
-    results.append('<li>' + 'Price :' + outboundprice + '</li>')
+    results.append('<li>' + 'Airline Designator: ' + inboundairline + '</li>')
+    results.append('<li>' + 'Flight Number: ' + inboundflightnumber + '</li><br>')
+    results.append('<li>' + 'Price: ' + outboundprice + '</li>')
     results.append('<li>' + 'Arrival : ' + outboundarrive + '</li>')
     results.append('<li>' + 'Departure : ' + outbounddeparts + '</li>')
     results.append('<li>' + 'Class: ' + outboundclass + '</li>')
-    results.append('<li>' + 'Seats : ' + outboundseats + '</li>')
+    results.append('<li>' + 'Seats: ' + outboundseats + '</li>')
     results.append('<li>' + 'Desination Airport: ' + outbounddestinationairport + '</li>')
     results.append('<li>' + 'Origin Airport: ' + outboundoriginairport + '</li>')
-    results.append('<li>' + 'Airline: ' + outboundairline + '</li>')
+    results.append('<li>' + 'Airline Designator: ' + outboundairline + '</li>')
     results.append('<li>' + 'Flight Number: ' + outboundflightnumber + '</li>')
 
     resultDiv.append(results)
@@ -160,6 +160,7 @@ appendAllInfoFlights = function(data){
 $('#submit2').click(function(event) {
   console.log('hi')
     event.preventDefault();
+    $("#body").css("background-image", "url('http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png')");
     $(".opaque").hide();
     ORIGIN = $('#origin').val()
     DESTINATION = $('#destination').val()
