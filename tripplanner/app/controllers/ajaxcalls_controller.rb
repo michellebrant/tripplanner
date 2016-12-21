@@ -6,6 +6,9 @@ class AjaxcallsController < ApplicationController
   def index
 
 
+   #   getEvents = {}
+   #  getEvents[:event] = HTTParty.get('http://api.eventful.com/rest/events/search?...&keywords=books&location=San+Diego&date=Future&app_key=bBnC2nhp4zqNBB4w')
+   # render json: getEvents
      getEvents = {}
     getEvents[:event] = HTTParty.get('http://api.eventful.com/rest/events/search?...&keywords=books&location=San+Diego&date=Future&app_key=bBnC2nhp4zqNBB4w')
    render json: getEvents
