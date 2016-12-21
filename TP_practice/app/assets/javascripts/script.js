@@ -221,6 +221,8 @@ getAllInfoFlights = function(data) {
 
 $('#submit3').click(function(event) {
     event.preventDefault();
+    $("#body").css("background-image", "url('http://www.intrawallpaper.com/static/images/colorful-triangles-background_yB0qTG6.jpg')");
+    $(".opaque").hide();
     HOTELLOCATION = $('#hotellocation').val()
     HOTELCHECKINDATE = $('#checkin').val()
     HOTELCHECKOUTDATE = $('#checkout').val()
@@ -230,16 +232,9 @@ $('#submit3').click(function(event) {
 
 appendAllHotelInfo = function(data){
   for(i=0;i<10;i++){
-    resultDiv = $('<div></div>')
-    results = $('<ul></ul>');
-    itemName = $('<li></li>');
-    itemAddress1 = $('<li></li>');
-    itemAddress2 = $('<li></li>');
-    itemAddress3 = $('<li></li>');
-    itemAddress4 = $('<li></li>');
-    itemAddress5 = $('<li></li>');
-    itemPrice = $('<li></li>');
-    itemContact = $('<li></li>');
+    resultDiv = $('<div class="col-md-3 col-md-offset-2 opaque2 whtTxt"></div>')
+    results = $('<ul class="list-unstyled"></ul>');
+
     name = data.results[i].property_name
     addressLine1 = data.results[i].address.line1
     addressLine2 = data.results[i].address.city
@@ -248,23 +243,13 @@ appendAllHotelInfo = function(data){
     addressLine5 = data.results[i].address.country
     itemPricee = data.results[i].min_daily_rate.amount
     itemContactt = data.results[i].contacts[0].detail
-    itemName.text(name)
-    itemAddress1.text(addressLine1)
-    itemAddress2.text(addressLine2)
-    itemAddress3.text(addressLine3)
-    itemAddress4.text(addressLine4)
-    itemAddress5.text(addressLine5)
-    itemPrice.text(itemPricee)
-    itemContact.text(itemContactt)
 
-    results.append(itemName);
-    results.append(itemAddress1);
-    results.append(itemAddress2);
-    results.append(itemAddress3);
-    results.append(itemAddress4);
-    results.append(itemAddress5);
-    results.append(itemPrice);
-    results.append(itemContact);
+    results.append('<li>' + 'Hotel: ' + name + '</li>');
+    results.append('<li>' + 'Address: ' + addressLine1+ '<br>'
+      + addressLine2 + ', ' + addressLine3 + '<br>' + addressLine4 +
+      ' ' + '(' + addressLine5 + ')' + '</li>');
+    results.append('<li>' + 'Lowest Daily Rate: ' + itemPricee + '</li>');
+    results.append('<li>' + 'Contact Number: ' + itemContactt + '</li>');
     resultDiv.append(results);
     $('body').append(resultDiv);
   }
@@ -326,21 +311,14 @@ calendarOptions()
 */
 var getLocation = function(){
            $(function() {
-            $( "#origin" ).autocomplete({
-               source: availableCities,
-               autoFocus:true
-            });$( "#destination" ).autocomplete({
-               source: availableCities,
-               autoFocus:true
-            });$( "#location" ).autocomplete({
-               source: availableCities,
-               autoFocus:true
-            });$( "#attractionlocation" ).autocomplete({
+            $( "#origin, #hotellocation, #destination, #location, #attractionlocation" ).autocomplete({
                source: availableCities,
                autoFocus:true
             });
-});
-}
+    });
+  }
 getLocation()
+
+
 
 
