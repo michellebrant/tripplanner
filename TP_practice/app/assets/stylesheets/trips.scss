@@ -21,3 +21,13 @@ input[type=search] {
   text-align: center;}
   .info-panel{
     display:none;}
+
+.opaque2{
+  background-color: black;
+  height: 400px;
+  width: 700px;
+  opacity: .7;
+  padding:20px;
+  border-radius: 20px;
+  margin:10px;
+}

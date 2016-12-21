@@ -104,26 +104,9 @@ appendResults = function(data){
 
 appendAllInfoFlights = function(data){
     for(i=0;i<10;i++){
-    resultDiv = $('<div></div>')
+    resultDiv = $('<div class="col-md-10 col-md-offset-1 opaque2">')
     results = $('<ul></ul>');
-    inboundpricelist = $('<li></li>');
-    inboundarrivelist = $('<li></li>');
-    inbounddepartslist = $('<li></li>');
-    inboundclasslist = $('<li></li>');
-    inboundseatslist = $('<li></li>');
-    inbounddestinationairportlist = $('<li></li>');
-    inboundoriginairportlist = $('<li></li>');
-    inboundflightnumberlist = $('<li></li>');
-    inboundairlinelist = $('<li></li>');
-    outboundpricelist = $('<li></li>');
-    outboundarrivelist = $('<li></li>');
-    outbounddepartslist = $('<li></li>');
-    outboundclasslist = $('<li></li>');
-    outboundseatslist = $('<li></li>');
-    outbounddestinationairportlist = $('<li></li>');
-    outboundoriginairportlist = $('<li></li>');
-    outboundairlinelist = $('<li></li>');
-    outboundflightnumberlist = $('<li></li>');
+
 
     inboundprice = data.results[i].fare.total_price
     inboundarrive = data.results[i].itineraries[0].inbound.flights[0].arrives_at
@@ -146,43 +129,24 @@ appendAllInfoFlights = function(data){
     outboundairline =  data.results[i].itineraries[0].outbound.flights[0].marketing_airline
 
 
-    inboundpricelist.text(inboundprice)
-    inboundarrivelist.text(inboundarrive)
-    inbounddepartslist.text(inbounddeparts)
-    inboundclasslist.text(inboundclass)
-    inboundseatslist.text(inboundseats)
-    inbounddestinationairportlist.text(inbounddestinationairport)
-    inboundoriginairportlist.text(inboundoriginairport)
-    inboundairlinelist.text(inboundairline)
-    inboundflightnumberlist.text(inboundflightnumber)
-    outboundpricelist.text(outboundprice)
-    outboundarrivelist.text(outboundarrive)
-    outbounddepartslist.text(outbounddeparts)
-    outboundclasslist.text(outboundclass)
-    outboundseatslist.text(outboundseats)
-    outbounddestinationairportlist.text(outbounddestinationairport)
-    outboundoriginairportlist.text(outboundoriginairport)
-    outboundairlinelist.text(outboundairline)
-    outboundflightnumberlist.text(outboundflightnumber)
-
-    results.append(inboundpricelist)
-    results.append(inboundarrivelist)
-    results.append(inbounddepartslist)
-    results.append(inboundclasslist)
-    results.append(inboundseatslist)
-    results.append(inbounddestinationairportlist)
-    results.append(inboundoriginairportlist)
-    results.append(inboundairlinelist)
-    results.append(inboundflightnumberlist)
-    results.append(outboundpricelist)
-    results.append(outboundarrivelist)
-    results.append(outbounddepartslist)
-    results.append(outboundclasslist)
-    results.append(outboundseatslist)
-    results.append(outbounddestinationairportlist)
-    results.append(outboundoriginairportlist)
-    results.append(outboundairlinelist)
-    results.append(outboundflightnumberlist)
+    results.append('<li>' + 'Price: ' + inboundprice + '</li>')
+    results.append('<li>' +'Arrival: ' + inboundarrive + '</li>')
+    results.append('<li>' + 'Departure: ' + inbounddeparts + '</li>')
+    results.append('<li>' + 'Class: ' + inboundclass + '</li>')
+    results.append('<li>' + 'Seats: ' + inboundseats + '</li>')
+    results.append('<li>' + 'Destination Airport: ' + inbounddestinationairport  + '</li>')
+    results.append('<li>' + 'Origin Airport: ' + inboundoriginairport  + '</li>')
+    results.append('<li>' + 'Airline: ' + inboundairline + '</li>')
+    results.append('<li>' + 'Flight Number: ' + inboundflightnumber + '</li>')
+    results.append('<li>' + 'Price :' + outboundprice + '</li>')
+    results.append('<li>' + 'Arrival : ' + outboundarrive + '</li>')
+    results.append('<li>' + 'Departure : ' + outbounddeparts + '</li>')
+    results.append('<li>' + 'Class: ' + outboundclass + '</li>')
+    results.append('<li>' + 'Seats : ' + outboundseats + '</li>')
+    results.append('<li>' + 'Desination Airport: ' + outbounddestinationairport + '</li>')
+    results.append('<li>' + 'Origin Airport: ' + outboundoriginairport + '</li>')
+    results.append('<li>' + 'Airline: ' + outboundairline + '</li>')
+    results.append('<li>' + 'Flight Number: ' + outboundflightnumber + '</li>')
 
     resultDiv.append(results)
 
@@ -196,6 +160,7 @@ appendAllInfoFlights = function(data){
 $('#submit2').click(function(event) {
   console.log('hi')
     event.preventDefault();
+    $(".opaque").hide();
     ORIGIN = $('#origin').val()
     DESTINATION = $('#destination').val()
     RETURNDATE = $('#returndate').val()
@@ -357,7 +322,7 @@ var calendarOptions = function(){
     }
 }
 calendarOptions()
-
+*/
 var getLocation = function(){
            $(function() {
             $( "#origin" ).autocomplete({
@@ -376,5 +341,5 @@ var getLocation = function(){
 });
 }
 getLocation()
-*/
+
 
