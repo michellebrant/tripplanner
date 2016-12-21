@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
 
+
+
   end
 
 

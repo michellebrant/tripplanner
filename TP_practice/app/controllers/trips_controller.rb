@@ -1,7 +1,9 @@
 class TripsController < ApplicationController
-
+    # before_action :autheticate_user!
+    # before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
     # response["accept"] = "application/json"
+
 
     @response = HTTParty.get("https://api.foursquare.com//v2/venues/explore?client_id=JXMGCWGIBGAJUNCQEJAGRANIBCPBW2R210YW0UUQ1Y3NL5HP&client_secret=0DJW0W2MWCSAIZIISJFY3YAI4B2SDIF4DIWN5UWMY2ALXQ2E&near=newyork&sortByDistance=1&radius=500&query=sushi&v=20161124&m=foursquare")
     # response["host"] = "api.skyscanner.net"
