@@ -106,6 +106,7 @@ appendAllInfoFlights = function(data){
     for(i=0;i<10;i++){
     resultDiv = $('<div></div>')
     results = $('<ul></ul>');
+
     inboundpricelist = $('<li></li>');
     inboundarrivelist = $('<li></li>');
     inbounddepartslist = $('<li></li>');
@@ -144,9 +145,33 @@ appendAllInfoFlights = function(data){
     outboundflightnumber = data.results[i].itineraries[0].outbound.flights[0].flight_number
     outboundoriginairport = data.results[i].itineraries[0].outbound.flights[0].origin.airport
     outboundairline =  data.results[i].itineraries[0].outbound.flights[0].marketing_airline
+    inboundpriceParams = inboundprice.replace('.', 'P')
+    inboundarriveParams = inboundarrive.replace(/ /g, '')
+    inbounddepartsParams = inbounddeparts.replace(/ /g, '')
+    inboundclassParams = inboundclass.replace(/ /g, '')
+
+    inbounddestinationairportParams = inbounddestinationairport.replace(/ /g, '')
+    inboundflightnumberParams = inboundflightnumber.replace(/ /g, '')
+    inboundoriginairportParams = inboundoriginairport.replace(/ /g, '')
+    inboundairlineParams = inboundairline.replace(/ /g, '')
 
 
-    inboundpricelist.text(inboundprice)
+    outboundpriceParams = outboundprice.replace(/ /g, '')
+    outboundarriveParams = outboundarrive.replace(/ /g, '')
+    outbounddepartsParams = outbounddeparts.replace(/ /g, '')
+    outboundclassParams = outboundclass.replace(/ /g, '')
+
+    outbounddestinationairportParams = outbounddestinationairport.replace(/ /g, '')
+    outboundflightnumberParams = outboundflightnumber.replace(/ /g, '')
+    outboundoriginairportParams = outboundoriginairport.replace(/ /g, '')
+    outboundairlineParams = outboundairline.replace(/ /g, '')
+
+
+
+    urlID = inboundpriceParams + '%20' +  outboundarriveParams  + '%20' + outbounddepartsParams + '%20' +  outboundclassParams + '%20' +  outbounddestinationairportParams + '%20' +  outboundflightnumberParams + '%20' +  outboundoriginairportParams  + '%20' + outboundairlineParams  + '%20' + inboundarriveParams  + '%20' + inbounddepartsParams + '%20' +  inboundclassParams  + '%20' + inbounddestinationairportParams + '%20' +  inboundflightnumberParams + '%20' +  inboundoriginairportParams + '%20' +  inboundairlineParams
+    namelist = $('<a href=/flights/'+urlID+'>Hey!</a>');
+
+    inboundpricelist.text('Round trip price is'+ inboundprice)
     inboundarrivelist.text(inboundarrive)
     inbounddepartslist.text(inbounddeparts)
     inboundclasslist.text(inboundclass)
@@ -155,7 +180,6 @@ appendAllInfoFlights = function(data){
     inboundoriginairportlist.text(inboundoriginairport)
     inboundairlinelist.text(inboundairline)
     inboundflightnumberlist.text(inboundflightnumber)
-    outboundpricelist.text(outboundprice)
     outboundarrivelist.text(outboundarrive)
     outbounddepartslist.text(outbounddeparts)
     outboundclasslist.text(outboundclass)
@@ -164,7 +188,12 @@ appendAllInfoFlights = function(data){
     outboundoriginairportlist.text(outboundoriginairport)
     outboundairlinelist.text(outboundairline)
     outboundflightnumberlist.text(outboundflightnumber)
-
+    inboundtitle = $('<li></li>')
+    inboundtitle.text=('Inbound Flight')
+    outboundtitle = $('<li></li>')
+    outboundtitle.text=('Outbound Flight')
+    results.append(namelist)
+    results.append(inboundtitle)
     results.append(inboundpricelist)
     results.append(inboundarrivelist)
     results.append(inbounddepartslist)
@@ -174,6 +203,7 @@ appendAllInfoFlights = function(data){
     results.append(inboundoriginairportlist)
     results.append(inboundairlinelist)
     results.append(inboundflightnumberlist)
+    results.append(outboundtitle)
     results.append(outboundpricelist)
     results.append(outboundarrivelist)
     results.append(outbounddepartslist)
@@ -225,6 +255,7 @@ getAllInfoHotel = function(data) {
             method: 'GET'
         })
         .done(function(data) {
+
           appendAllHotelInfo(data)
 
           // appendResultsAmadeus(data)
@@ -242,10 +273,7 @@ getAllInfoFlights = function(data) {
         })
         .done(function(data) {
           appendAllInfoFlights(data)
-          console.log(data.results[0].outbound[0].flights[0].departs_at)
-          console.log(data.results[0].outbound[0].flights[0].arrives_at)
-          console.log(data.results[0].outbound[0].flights[0].origin.airport)
-          console.log(data.results[0].outbound[0].flights[0].origin.terminal)
+
 
         })
 }

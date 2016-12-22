@@ -1,4 +1,6 @@
 <%=@address  %>
+<%=@trips  %>
+<h1>HI</h1>
 <%=@ID  %>
 <form action='/hotels' method='POST'>
   <h2>Add a hotel:</h2>
@@ -10,6 +12,13 @@
     <input name='rate' value='<%= @rate  %>'><br>
   <label>Phone Number</label><br>
     <input name='phone' value = '<%=@phone  %>'><br>
+     <label>Pick a trip to add to</label><br>
+    <input name='trip' value = '<%=@phone  %>'><br>
+    <select name="trip">
+    <% @trip.each do |trip|  %>
+     <option name="trip"><%= trip['name']  %></option>
+     <% end %>
+     </select>
 
   <button>Submit</button>
 </form>
