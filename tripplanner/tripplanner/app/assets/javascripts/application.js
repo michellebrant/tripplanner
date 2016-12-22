@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+<<<<<<< HEAD:tripplanner/tripplanner/app/assets/javascripts/application.js
+=======
+//=require script
+//= require jquery-ui
+>>>>>>> aedb8e146711bebc907b7a8f9c4766209fb99a7d:TP_practice/app/assets/javascripts/application.js
