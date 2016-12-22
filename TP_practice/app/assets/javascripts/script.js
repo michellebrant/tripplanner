@@ -1,6 +1,7 @@
 console.log("script loaded")
 
 
+
 $('#yoyo').click(function(event){
 console.log('hi')
 })
@@ -19,6 +20,9 @@ getAllInfoFourSquare = function(data) {
 }
 $('#ME').click(function(event) {
     event.preventDefault();
+     $("#body").css("background-image", "url('http://www.intrawallpaper.com/static/images/color-wallpapers.jpg')");
+    $(".opaque").hide();
+    $('#homeNav').hide();
     category = $('#foodkeyword').val()
     category = category.split(' ');
     category = category.join('%20')
@@ -29,6 +33,9 @@ $('#ME').click(function(event) {
 })
 $('#ME2').click(function(event) {
     event.preventDefault();
+     $("#body").css("background-image", "url('http://www.intrawallpaper.com/static/images/awesome-rain-wallpaper_0_PB7IVa9.jpg')");
+    $(".opaque").hide();
+    $('#homeNav').hide();
     category = $('#attractionkeyword').val()
     category = category.split(' ');
     category = category.join('%20')
@@ -55,9 +62,9 @@ $('li').mouseout(function(event){
 appendResults = function(data){
   result = data.response.groups[0]
   for(i=0;i<10;i++){
-    resultDiv = $('<div class="col-md-6"></div>')
-    results = $('<ul></ul>');
-    item = $('<li></li>');
+    resultDiv = $('<div class="col-md-3 col-md-offset-2 opaque2 whtTxt"></div>')
+    results = $('<ul class="list-unstyled"></ul>');
+    item = $('<li><strong></strong></li><br>');
     itemAddress1 = $('<li></li>');
     itemAddress2 = $('<li></li>');
     itemAddress3 = $('<li></li>');
@@ -162,6 +169,7 @@ $('#submit2').click(function(event) {
     event.preventDefault();
     $("#body").css("background-image", "url('http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png')");
     $(".opaque").hide();
+    $('#homeNav').hide();
     ORIGIN = $('#origin').val()
     DESTINATION = $('#destination').val()
     RETURNDATE = $('#returndate').val()
@@ -200,19 +208,22 @@ getAllInfoHotel = function(data) {
 
 
 getAllInfoFlights = function(data) {
+   //$('#loading').show();
     $.ajax({
             url: "http://api.sandbox.amadeus.com//v1.2/flights/low-fare-search?apikey=qzex7QQAbrN1YS9N7nDo2TQDlENnACs8&origin="+ORIGIN+
             "&destination="+DESTINATION+"&departure_date="+DATE4+"&return_date="+RETURNDATE4+
             "&adults="+ADULTS+"&children="+CHILDREN+"&nonstop=false&max_price="+MAXPRICE+"&one-way=false&number_of_results=10",
-            method: 'GET'
-        })
+            method: 'GET',
+            /* success : function(html){
+            $('#loading').hide(); // hide the loading message
+        }*/
+      })
         .done(function(data) {
           appendAllInfoFlights(data)
           console.log(data.results[0].outbound[0].flights[0].departs_at)
           console.log(data.results[0].outbound[0].flights[0].arrives_at)
           console.log(data.results[0].outbound[0].flights[0].origin.airport)
           console.log(data.results[0].outbound[0].flights[0].origin.terminal)
-
         })
 }
 
@@ -223,6 +234,7 @@ $('#submit3').click(function(event) {
     event.preventDefault();
     $("#body").css("background-image", "url('http://www.intrawallpaper.com/static/images/colorful-triangles-background_yB0qTG6.jpg')");
     $(".opaque").hide();
+    $('#homeNav').hide();
     HOTELLOCATION = $('#hotellocation').val()
     HOTELCHECKINDATE = $('#checkin').val()
     HOTELCHECKOUTDATE = $('#checkout').val()
